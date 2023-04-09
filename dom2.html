@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOM - Selection, Manipulation, Traversal and event handling</title>
+    <style>
+        * {
+            border: 1px dotted #0e0404;
+            padding: 3px;
+            margin: 3px;
+        }
+
+.custom{
+    color: red;
+    background-color: blue;
+}
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            max-width: 50%;
+            margin: 10px auto;
+            font-family: sans-serif;
+            color: rgb(129, 6, 6);
+        }
+/* 
+        li:nth-child(3) {
+            background: blue;
+            color: green;
+        } */
+    </style>
+</head>
+
+<body>
+    <h1 id="topic">DOM - Selection, Manipulation, Traversal and Event</h1>
+    <div class="container">
+        <section class="container" id="sectA">
+            <a href="http://web.technology.com">Home</a>
+            <p class="p1">Lorem ipsum non ipsum! 1</p>
+            <p class="p2">consequuntur modi dicta.</p>
+            <p class="p3">delectus tempore ut atque ea officia.</p>
+            <p><strong>Item List in section A: </strong></p>
+            <ul>
+                <li>Sect A -item 1</li>
+                <li>Sect A -item 2</li>
+                <li>Sect A -item 3</li>
+            </ul>
+        </section>
+
+        <section id="sectB">
+            <p id="demo-event-hdlr" onclick="func001()">quos eveniet deserunt, soluta repellat ipsa similique, facere delectus?</p>
+            <p><strong>Item List: </strong></p>
+            <ol>
+                <li id="demo-event-hdlr-2">item 1</li>
+                <li>item 2</li>
+                <li>item 3</li>
+            </ol>
+        </section>
+    </div>
+
+    <div class="main-content">
+        <form action="">
+            <input  type="text" name="fullname" id="fullname">
+            <input  id="demo-event-hdlr-3" type="submit" value="submit">
+        </form>
+    </div>
+
+    <div class="footer">
+        <p class="my-foot">footer section</p>
+    </div>
+
+</body>
+
+<script>
+const input = document.getElementById('demo-event-hdlr-3');
+input.addEventListener('click', function(event){
+    console.log('clicked');
+    event.preventDefault();
+    var name = document.getElementById('fullname').value;
+    alert(name);
+    console.log(name);
+    //step 1: select li element
+    const newLi = document.createElement('li');
+    //step 2: create text node
+    const newName = document.createTextNode(name);
+    //step 3: append text node to li element
+    newLi.appendChild(newName);
+    //step 4: append li element to ul element
+    const ul = document.querySelector('ol');
+    ul.appendChild(newLi);
+});
+</script>
+</html>
+
